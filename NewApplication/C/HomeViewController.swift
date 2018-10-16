@@ -8,18 +8,15 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
-
+class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
+    
+    var test = ["1", "2", "3"]
+    
+    var unsplashs: [Unsplash] = []
+    
     @IBOutlet var myTableView: UITableView!
     
-    func getApi(){
-        let apiUrl = URL(string: "https://api.unsplash.com/photos/?client_id=675888f23841a95b64484b9455798829c92fe6672c2c642fb575874f7831e7f5")
-        URLSession.shared.dataTask(with: apiUrl!) { (data, response, error) in
-            do {
-                var getApi = try JSONDecoder().decode(<#T##type: Decodable.Protocol##Decodable.Protocol#>, from: <#T##Data#>)
-            }
-        }
-    }
+    @IBOutlet var titleViewLabel: UILabel!
     
     
     
@@ -27,22 +24,61 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        unsplashs = CallUnsplash.callAPI()
+        print(unsplashs)
+        
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.tintColor = .white
         myTableView.contentInsetAdjustmentBehavior = .never
         
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    //MARK: TableView
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
-    */
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return 1
+        default:
+            return test.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TVCVCell", for: indexPath)
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HTVCell", for: indexPath)
+            cell.textLabel?.text = test[indexPath.row]
+            return cell
+        }
+    }
+    
+    
+    //MARK: CollectionView
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CVCell", for: indexPath)
+        return cell
+    }
+    
+    
+    
+    
 
 }

@@ -8,8 +8,28 @@
 
 import Foundation
 
-struct Unsplash {
-    let 
+struct Unsplash: Decodable {
+    let id: String
+    let width: Int
+    let height: Int
+//    let urls: Urls
+//    let user: User
+//
+//    struct Urls: Decodable {
+//        let raw: String
+//        let full: String
+//        let regular: String
+//        let smaill: String
+//        let thumb: String
+//    }
+//
+//    struct User: Decodable {
+//        let id: String
+//        let name: String
+//        let instagram_username: String
+//    }
+//
+    
 }
 
 
