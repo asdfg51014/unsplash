@@ -53,10 +53,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TVCVCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TVCVCell", for: indexPath) as! ImageGroupTableViewCell
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "HTVCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HTVCell", for: indexPath) as! HomeTableViewCell
             cell.textLabel?.text = test[indexPath.row]
             return cell
         }
