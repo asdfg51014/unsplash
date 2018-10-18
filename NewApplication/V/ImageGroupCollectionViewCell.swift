@@ -12,5 +12,4 @@ class ImageGroupCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var imageGroupimage: UIImageView!
     
-    
 }

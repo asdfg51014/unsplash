@@ -21,6 +21,7 @@
 		2ACCB320217581ED004BFED2 /* ImageGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCB31F217581ED004BFED2 /* ImageGroupTableViewCell.swift */; };
 		2ACCB322217582AD004BFED2 /* ImageGroupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCB321217582AD004BFED2 /* ImageGroupCollectionViewCell.swift */; };
 		2ACCB32421758F0F004BFED2 /* CallUnsplashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCB32321758F0F004BFED2 /* CallUnsplashAPI.swift */; };
+		2ACCB347217848E2004BFED2 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCB346217848E2004BFED2 /* DetailCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		2ACCB31F217581ED004BFED2 /* ImageGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGroupTableViewCell.swift; sourceTree = "<group>"; };
 		2ACCB321217582AD004BFED2 /* ImageGroupCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGroupCollectionViewCell.swift; sourceTree = "<group>"; };
 		2ACCB32321758F0F004BFED2 /* CallUnsplashAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallUnsplashAPI.swift; sourceTree = "<group>"; };
+		2ACCB346217848E2004BFED2 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,14 +80,9 @@
 				2A0E6FD721745F9200923F38 /* LaunchScreen.storyboard */,
 				2A0E6FDA21745F9200923F38 /* Info.plist */,
 				2A0E6FD221745F9000923F38 /* NewApplication.xcdatamodeld */,
+				2A0E6FEA2174B3EE00923F38 /* C */,
 				2A0E6FEC2174B41E00923F38 /* M */,
 				2A0E6FEB2174B40600923F38 /* V */,
-				2A0E6FEA2174B3EE00923F38 /* C */,
-				2A0E6FEF2174B98B00923F38 /* GetAPI.swift */,
-				2ACCB31F217581ED004BFED2 /* ImageGroupTableViewCell.swift */,
-				2ACCB31B2174C97C004BFED2 /* HomeTableViewCell.swift */,
-				2ACCB321217582AD004BFED2 /* ImageGroupCollectionViewCell.swift */,
-				2ACCB32321758F0F004BFED2 /* CallUnsplashAPI.swift */,
 			);
 			path = NewApplication;
 			sourceTree = "<group>";
@@ -104,6 +101,10 @@
 		2A0E6FEB2174B40600923F38 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				2ACCB31F217581ED004BFED2 /* ImageGroupTableViewCell.swift */,
+				2ACCB321217582AD004BFED2 /* ImageGroupCollectionViewCell.swift */,
+				2ACCB31B2174C97C004BFED2 /* HomeTableViewCell.swift */,
+				2ACCB346217848E2004BFED2 /* DetailCollectionViewCell.swift */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -111,6 +112,8 @@
 		2A0E6FEC2174B41E00923F38 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				2A0E6FEF2174B98B00923F38 /* GetAPI.swift */,
+				2ACCB32321758F0F004BFED2 /* CallUnsplashAPI.swift */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				2A0E6FD421745F9000923F38 /* NewApplication.xcdatamodeld in Sources */,
 				2ACCB31C2174C97C004BFED2 /* HomeTableViewCell.swift in Sources */,
 				2A0E6FE92174B15B00923F38 /* DetailViewController.swift in Sources */,
+				2ACCB347217848E2004BFED2 /* DetailCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

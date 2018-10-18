@@ -8,33 +8,52 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var test = ["1", "2", "3"]
     
     var unsplashs: [Unsplash] = []
+    var images: [UIImage] = []
     
     @IBOutlet var myTableView: UITableView!
     
     @IBOutlet var titleViewLabel: UILabel!
     
+    func getApi(){
+        CallUnsplash.callapi(call: {(theCall) in
+            self.unsplashs = theCall
+            print("in viweController")
+            print(self.unsplashs)
+            DispatchQueue.main.async {
+                
+                self.myTableView.reloadData()
+                
+            }
+        })
+    }
     
-    
+//    func calculate(a: CGFloat, b: CGFloat ) -> CGFloat {
+//        var c = a / b
+//        var w = UIScreen.main.bounds.width
+//        var h = w / c
+//        return h
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        myTableView.delegate = self
+        myTableView.dataSource = self
         
-        unsplashs = CallUnsplash.callAPI()
+        getApi()
         print(unsplashs)
+        print(123)
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.tintColor = .white
         myTableView.contentInsetAdjustmentBehavior = .never
         
-        
     }
-    
     
     //MARK: TableView
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -46,7 +65,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         case 0:
             return 1
         default:
-            return test.count
+            return unsplashs.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 220
+        } else {
+           return 300
         }
     }
     
@@ -57,28 +84,29 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "HTVCell", for: indexPath) as! HomeTableViewCell
-            cell.textLabel?.text = test[indexPath.row]
+            if let url = URL(string: unsplashs[indexPath.row].urls.small) {
+                if let show = try? Data(contentsOf: url) {
+                    DispatchQueue.main.async {
+                        cell.showImage.image = UIImage(data: show)
+                    }
+                }
+            }
             return cell
         }
     }
     
-    
-    //MARK: CollectionView
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            if let indexPath = myTableView.indexPathForSelectedRow {
+                let segueImage = segue.destination as! DetailViewController
+                segueImage.unsplashs = unsplashs
+                segueImage.inde = indexPath.row
+            }
+        }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CVCell", for: indexPath)
-        return cell
-    }
-    
-    
-    
-    
-
 }
